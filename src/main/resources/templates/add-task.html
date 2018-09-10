@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Zadanie</title>
+    <style type="text/css">
+
+        .image {
+            width: 300px;
+        }
+
+        .container {
+            float: left;
+        }
+
+        #border {
+            background-color: beige;
+            border: 3px dashed cornflowerblue;
+            font-size: 1em;
+
+        }
+
+        #border:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #left-list {
+            width: 50%;
+            background-color: lightblue;
+            float: left;
+        }
+
+        #right-list {
+            width: 50%;
+            background-color: lightseagreen;
+            float: left;
+        }
+
+        #title {
+            text-align: center;
+            font-size: 4.4em;
+            color: mintcream;
+            font-family: "AR ESSENCE";
+            background-color: darkgray;
+        }
+
+        .text-link {
+            font-size: 2em;
+            color: darkgray;
+            font-family: "AR ESSENCE";
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div id="border">
+    <h3 id="title">Dodaj Zadanie</h3>
+    <div class="text-link">
+        <form action="/dodaj-zadanie" method="post" th:object="${newTask}">
+            <p>Wprowadź opis:</p>
+            <input type="text" th:field="*{description}" placeholder="Opis"/> <br>
+            <p>Punkty:</p>
+            <input type="number" min="1" max="10" step="1" value="5" th:field="*{value}"/> <br>
+            <input type="submit" value="Dodaj"/>
+            <input type="reset" value="Resetuj"> <br>
+        </form>
+    </div>
+</div>
+</body>
+</html>
