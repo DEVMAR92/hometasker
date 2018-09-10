@@ -38,7 +38,9 @@
             float: left;
         }
 
-        #title {
+        .title {
+            margin-left: 10%;
+            margin-right: 10%;
             text-align: center;
             font-size: 4.4em;
             color: mintcream;
@@ -57,7 +59,7 @@
 </head>
 <body>
 <div id="border">
-    <h3 id="title">Dodaj Zadanie</h3>
+    <h3 class="title">Dodaj Zadanie</h3>
     <div class="text-link">
         <form action="/dodaj-zadanie" method="post" th:object="${newTask}">
             <p>Wprowadź opis:</p>

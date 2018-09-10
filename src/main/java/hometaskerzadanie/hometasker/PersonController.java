@@ -19,16 +19,6 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @RequestMapping("/persons")
-    public String listOfUsers(Model model) {
-
-        List<Person> personList = personRepository.getPesrons();
-
-        model.addAttribute("persons", personList);
-
-        return "/persons";
-    }
-
     @GetMapping("/dodaj-osobe")
     public String showAddForm(Model model) {
         model.addAttribute("newPerson", new Person());
@@ -37,6 +27,6 @@ public class PersonController {
     @PostMapping("/dodaj-osobe")
     public String addTask(Person person) {
         personRepository.addPerson(person);
-        return "redirect:/persons";
+        return "redirect:/";
     }
 }

@@ -8,6 +8,7 @@ public class Person {
     public Person(String name) {
         this.name = name;
     }
+
     public Person(){}
 
 
@@ -29,7 +30,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + ", pkt: " + points ;
+        return name + ", uzyskano : " + points  + " pkt.";
     }
 
 

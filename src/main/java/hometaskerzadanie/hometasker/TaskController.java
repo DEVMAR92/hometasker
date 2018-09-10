@@ -17,18 +17,6 @@ public class TaskController {
         this.actualTasks = actualTasks;
     }
 
-    @GetMapping("/")
-    public String listOfTasks(Model model) {
-
-        List<Task> taskList = actualTasks.getTasks();
-
-
-        model.addAttribute("tasks", taskList);
-
-        return "homepage";
-    }
-
-
     @GetMapping("/dodaj-zadanie")
     public String showAddForm(Model model) {
         model.addAttribute("newTask", new Task());

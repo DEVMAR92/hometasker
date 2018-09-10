@@ -5,6 +5,13 @@
     <title>Organizer Domowy</title>
     <style type="text/css">
 
+
+        .image {
+            align-items: center;
+            margin: 10%;
+            width: 80%;
+        }
+
         #border {
             background-color: beige;
             border: 3px dashed cornflowerblue;
@@ -30,7 +37,7 @@
             float: left;
         }
 
-        #center-list {
+        .center-list {
             width: 80%;
             background-color: azure;
             float: left;
@@ -40,12 +47,12 @@
             color: darkgray;
             margin-left: 10%;
             margin-right: 10%;
-            margin-bottom: 10%;
-            margin-top: 5%;
             border: 2px dashed cornflowerblue;
         }
 
         .title {
+            margin-left: 10%;
+            margin-right: 10%;
             text-align: center;
             font-size: 4.4em;
             color: mintcream;
@@ -54,61 +61,97 @@
         }
 
         .header {
+            float: left;
             text-align: center;
             font-size: 3em;
             color: mintcream;
             font-family: "AR ESSENCE";
             background-color: darkgray;
+            margin-left: 2%;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
-        .text-link {
-            font-size: 2.4em;
-            font-family: "AR ESSENCE";
-            text-align: center;
-        }
-        .line{
+        .line {
             border: 2.5px dashed cornflowerblue;
+        }
+
+        .pause {
+            margin-top: 10%;
+        }
+
+        .button {
+            background-color: darkgray;
+            border: none;
+            color: mintcream;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .edit-menu {
+            width: 80%;
+            float: left;
+            padding-left: 10px;
+            margin-top: 5px;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-bottom: 5%;
         }
 
     </style>
 </head>
+
 <body>
 
 <div id="border">
 
 
-    <h1 class="title">ORGANIZER</h1>
+    <h1 class="title">
+    <u>ORGANIZER</u>
+    </h1>
+
 
     <div class="line"></div>
 
     <h2 class="header">Aktualna Lista Zadań</h2>
 
-    <div id="center-list">
+    <div class="center-list">
         <ul th:each="task:${tasks} ">
             <li th:text="${task}">zadanie</li>
         </ul>
     </div>
 
+    <div class="edit-menu">
 
-    <div id="left-list">
+        <a href="/dodaj-zadanie">
+            <button type="button" class="button">
+                <p>+ Zadanie</p>
+            </button>
+        </a>
 
-        <h3 class="text-link">
-            <a href="/persons">LISTA OSÓB</a>
-        </h3>
+    </div>
 
+
+    <h2 class="header">Lista Osób</h2>
+
+    <div class="center-list">
+        <ul th:each="person:${persons}">
+            <li th:text="${person}">Osoba</li>
+        </ul>
+    </div>
+    <div class="edit-menu">
+
+        <a href="/dodaj-osobe">
+            <button type="button" class="button">
+                <p>+ Osoba</p>
+            </button>
+        </a>
 
     </div>
 
-    <div id="right-list">
-
-        <h3 class="text-link">
-            <a href="/dodaj-zadanie">DODAJ ZADANIE</a>
-        </h3>
-        <h3 class="text-link">
-            <a href="/dodaj-osobe">DODAJ OSOBE</a>
-        </h3>
-
-    </div>
 
 </div>
 </body>
