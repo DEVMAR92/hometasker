@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj zadanie</title>
+    <title>Edycja zadania</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <style type="text/css">
+
 
         #border {
             background-color: beige;
@@ -92,7 +93,7 @@
                     <a href="/archives" class="btn btn-outline-secondary" style="color: mintcream" role="button">Archiwum</a>
                 </div>
                 <div style="background-color: darkgrey ">
-                    <a href="/archives" class="btn btn-outline-secondary" style="color: mintcream"
+                    <a href="/ranking" class="btn btn-outline-secondary" style="color: mintcream"
                        role="button">Ranking</a>
                 </div>
             </div>
@@ -101,37 +102,29 @@
         <br>
         <br>
 
-        <h3 class="header">DODAJ ZADANIE</h3>
+        <h3 class="header">EDYTUJ OSOBĘ</h3>
         <br>
         <div style="text-align: center; padding-left: 40%">
-            <form action="/task/add" method="post" th:object="${newTask}">
+            <form action="/task/edit" method="post" th:object="${editPerson}">
                 <div class="form-group">
-                    <input type="text" th:field="*{description}" class="form-control" placeholder="treść zadania" style="width: 30%">
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="imię" style="width: 30%">
                 </div>
                 <div class="form-group">
-                    <input type="number" th:field="*{value}" class="form-control" placeholder="punkty" style="width: 10%">
-                </div>
-                <div class="form-group">
-                    <select th:field="*{person}" class="form-control" style="width: 20%">
-                        <option th:each="p : ${person}" th:value="${p}" th:text="${p}"></option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="datetime-local" th:field="*{localDateTime}" class="form-control" placeholder="Data i godzina: rrrr-MM-dd HH:mm" style="width: 30%">
+                    <input type="hidden" th:field="*{points}" class="form-control" placeholder="treść zadania" style="width: 30%">
                 </div>
                 <div class="form-group">
                     <input type="submit" class="form-control" value="Dodaj" style="width: 15%">
                 </div>
             </form>
         </div>
-        <br>
-        <br>
-        <br>
-        <div class="footer">
-            <p style="text-align: left; color: mintcream">@DEVMAR92</p>
-        </div>
-        <br>
     </div>
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <p style="text-align: left; color: mintcream">@DEVMAR92</p>
+    </div>
+    <br>
 </div>
 
 </body>

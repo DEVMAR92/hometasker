@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Strona główna</title>
+    <title>Ranking osób</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -99,6 +99,10 @@
         <div>
             <div class="button-row">
                 <div style="background-color: darkgray">
+                    <a href="/" class="btn btn-outline-secondary" style="color: mintcream" role="button">Strona
+                        główna</a>
+                </div>
+                <div style="background-color: darkgray">
                     <a href="/person/add" class="btn btn-outline-secondary" style="color: mintcream" role="button">Dodaj
                         osobe</a>
                 </div>
@@ -109,51 +113,42 @@
                 <div style="background-color: darkgray">
                     <a href="/archives" class="btn btn-outline-secondary" style="color: mintcream" role="button">Archiwum</a>
                 </div>
-                <div style="background-color: darkgrey ">
-                    <a href="/ranking" class="btn btn-outline-secondary" style="color: mintcream"
-                       role="button">Ranking</a>
-                </div>
             </div>
         </div>
 
         <br>
         <br>
 
-        <h3 class="header">LISTA ZADAŃ</h3>
+        <h3 class="header">RANKING</h3>
 
         <div class="table-format">
             <table class="table table-striped">
                 <thead>
                 <tr class="table-row-top-format">
-                    <th scope="col">Zadanie</th>
-                    <th scope="col">Punkty</th>
                     <th scope="col">Osoba</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Zawierdź</th>
+                    <th scope="col">Punkty</th>
                     <th scope="col">Narzędzia</th>
+
                 </tr>
                 </thead>
-                <tbody>
-                <tr th:each="task: ${tasks}" class="table-row-bot-format">
-                    <th th:text="${task.description}"></th>
-                    <th th:text="${task.value}"></th>
+                <tbody class="table-row-bot-format">
+                <tr th:each="person: ${persons}">
                     <th>
-                        <a th:href="'/person?person=' + ${task.person}">
-                            <p th:text="${task.person}"></p>
+                        <a th:href="'/person?person=' + ${person.name}">
+                            <p th:text="${person.name}"></p>
                         </a>
                     </th>
-                    <th th:text="${task.localDateTime}"></th>
+                    <th th:text="${person.points}"></th>
                     <th>
-                        <a th:href="'/person/add/points?description=' + ${task.description} + '&value=' + ${task.value} +  '&person=' + ${task.person} +'&localDateTime=' + ${task.localDateTime}"
-                           class="btn btn-outline-secondary" role="button">wykonano</a>
-
-                    </th>
-                    <th>
-                        <a th:href="'/task/edit?description=' + ${task.description} + '&value=' + ${task.value} +  '&person=' + ${task.person} +'&localDateTime=' + ${task.localDateTime}"
+                        <a th:href="'/person/edit?name=' + ${person.name} + '&points=' + ${person.points}"
                            class="btn btn-outline-light" style="color: darkgrey" role="button">Edytuj</a>
-                        <a th:href="'/task/remove?description=' + ${task.description} + '&value=' + ${task.value} +  '&person=' + ${task.person} +'&localDateTime=' + ${task.localDateTime}"
+                        <a th:href="'/person/remove?name=' + ${person.name} + '&points=' + ${person.points}"
                            class="btn btn-outline-light" style="color: darkgrey" role="button">Usuń</a>
                     </th>
+                </tr>
+                <tr>
+                    <th style="text-align: right">SUMA:</th>
+                    <th th:text="${sum}"></th>
                 </tr>
                 </tbody>
             </table>
